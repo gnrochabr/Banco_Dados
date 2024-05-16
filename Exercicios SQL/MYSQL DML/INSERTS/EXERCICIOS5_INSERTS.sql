@@ -48,13 +48,13 @@ INSERT INTO LOCAIS (ID_LOCAL, NOME, LOG_LOCAL, NUMLOG_LOCAL, BAIRRO_LOCAL, CIDAD
 -- Inserção na tabela EVENTOS
 INSERT INTO EVENTOS (ID_EVENTO, NOME_EVENTO, DATA_EVENTO, ENTIDADE_EVENTO, LOCAL_EVENTO) VALUES
     (1, 'Congresso de Tecnologia', '2024-08-15', 'Tech World', 1),
-    (2, 'Desfile de Moda', '2024-10-25', 'Fashion Association', 2),
+    (2, 'Desfile de Moda', '2024-10-25', 'Fashion Association', 1),
     (3, 'Feira Gastronômica', '2024-07-05', 'Food Expo', 3),
     (4, 'Expo Eletrônica', '2024-09-10', 'ElectroTech', 4),
-    (5, 'Exposição de Aquários', '2024-11-20', 'AquaWorld', 5),
-    (6, 'Congresso de TI', '2024-12-10', 'Tech World', 6),
+    (5, 'Exposição de Aquários', '2024-11-20', 'AquaWorld',NULL),
+    (6, 'Congresso de TI', '2024-12-10', 'Tech World', 7),
     (7, 'Desfile de Verão', '2025-02-28', 'Fashion Association', 7),
-    (8, 'Feira de Orgânicos', '2025-05-15', 'Food Expo', 8),
+    (8, 'Feira de Orgânicos', '2025-05-15', 'Food Expo', 16),
     (9, 'Expo de Dispositivos', '2025-07-20', 'ElectroTech', 9),
     (10, 'Exposição Marinha', '2025-09-30', 'AquaWorld', 10);
 
