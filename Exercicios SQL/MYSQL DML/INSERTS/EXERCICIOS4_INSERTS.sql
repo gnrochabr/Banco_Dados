@@ -1,5 +1,5 @@
 USE BDEX4_ESTOQUE;
-INSERT INTO PRODUTOS (ID_PRODUTO, NOME, DESCRICAO, PRECO) VALUES
+INSERT INTO PRODUTOS (ID_PRODUTO, NOME_PRO, DESCRICAO, PRECO) VALUES
 (1, 'Camiseta', 'Camiseta branca de algodão', 25.90),
 (2, 'Calça Jeans', 'Calça jeans slim azul', 59.99),
 (3, 'Tênis', 'Tênis esportivo preto', 79.50),
@@ -21,7 +21,7 @@ INSERT INTO PRODUTOS (ID_PRODUTO, NOME, DESCRICAO, PRECO) VALUES
 (19, 'Guarda-chuva', 'Guarda-chuva dobrável resistente ao vento', 15.00),
 (20, 'Cadeado', 'Cadeado de segredo para bagagem', 9.99);
 
-INSERT INTO FORNECEDORES (ID_FORNECEDOR, CNPJ, NOME, CIDADE) VALUES
+INSERT INTO FORNECEDORES (ID_FORNECEDOR, CNPJ, NOME_FOR, CIDADE) VALUES
 (1, '12345678901', 'MegaTech Distribuidora', 'São Paulo'),
 (2, '23456789012', 'Fashion Supplier', 'Rio de Janeiro'),
 (3, '34567890123', 'Food King', 'Belo Horizonte'),
