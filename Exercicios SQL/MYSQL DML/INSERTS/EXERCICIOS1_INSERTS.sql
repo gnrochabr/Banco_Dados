@@ -47,16 +47,16 @@ INSERT INTO DEPARTAMENTOS (COD_ESPECIALIDADE, NOME_ESPECIALIDADE) VALUES
 
 -- Inserções básicas de médicos
 INSERT INTO MEDICOS (CRM, UF, NOME, EMAIL, TELEFONE, DEPTO_COD_ESPEC) VALUES 
-(123456, 'SP', 'Dr. Carlos', 'carlos@example.com', '987654321', 1),
+(123456, 'SP', 'Dr. Carlos', 'carlos@example.com', '987654321', NULL),
 (789012, 'RJ', 'Dra. Ana', 'ana@example.com', '123456789', 2),
 (345678, 'MG', 'Dr. João', 'joao@example.com', '234567890', 3),
 (901234, 'RS', 'Dra. Maria', 'maria@example.com', '345678901', 4),
-(567890, 'SC', 'Dr. Pedro', 'pedro@example.com', '456789012', 5),
+(567890, 'SC', 'Dr. Pedro', 'pedro@example.com', '456789012', NULL),
 (234567, 'PR', 'Dra. Paula', 'paula@example.com', '567890123', 6),
 (890123, 'BA', 'Dr. Lucas', 'lucas@example.com', '678901234', 7),
 (456789, 'ES', 'Dra. Renata', 'renata@example.com', '789012345', 8),
 (678901, 'PE', 'Dr. Guilherme', 'guilherme@example.com', '890123456', 9),
-(234567, 'AM', 'Dra. Camila', 'camila@example.com', '901234567', 10),
+(234567, 'AM', 'Dra. Camila', 'camila@example.com', '901234567', NULL),
 (456789, 'PA', 'Dr. Rafael', 'rafael@example.com', '012345678', 11),
 (123456, 'CE', 'Dra. Isabela', 'isabela@example.com', '112233445', 12),
 (789012, 'TO', 'Dr. Roberto', 'roberto@example.com', '223344556', 13),
@@ -70,7 +70,7 @@ INSERT INTO MEDICOS (CRM, UF, NOME, EMAIL, TELEFONE, DEPTO_COD_ESPEC) VALUES
 
 -- Inserções básicas de consultas
 INSERT INTO CONSULTAS (ID_CONSULTA, ANAMNESE, DATA_CONS, HORA_CONS, CRM, UF, CPF_PACIENTE) VALUES 
-(1, 'Dor no peito', '2024-05-13', '10:00:00', 678901, 'RO', '19191919191'),
+(1, NULL, '2024-05-13', '10:00:00', 678901, 'RO', '19191919191'),
 (2, 'Fratura no braço', '2024-05-14', '11:00:00', 789012, 'RJ', '98765432109'),
 (3, 'Virose', '2024-05-15', '12:00:00', 345678, 'MG', '11111111111'),
 (4, 'Dor de cabeça', '2024-05-16', '13:00:00', 678901, 'RO', '19191919191'),
