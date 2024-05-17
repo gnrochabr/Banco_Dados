@@ -204,7 +204,8 @@ SELECT
 FROM (
     SELECT 
         I.DATA_ING,
-        CONCAT(GROUP_CONCAT(E.NOME_ESPEC SEPARATOR ', '), ' assistiram ', F.NOME_FILME) AS INFO
+        CONCAT(GROUP_CONCAT(E.NOME_ESPEC SEPARATOR ', '), 
+        IF(COUNT(E.NOME_ESPEC) > 1,' assistiram ',' assistiu '), F.NOME_FILME) AS INFO
     FROM 
         INGRESSOS I
     JOIN 
