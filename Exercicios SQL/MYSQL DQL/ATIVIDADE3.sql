@@ -156,3 +156,64 @@ LEFT JOIN PRODUTOS_FORNECEDORES PF ON PF.FORNECEDOR = F.ID_FORNECEDOR
 LEFT JOIN PRODUTOS P ON P.ID_PRODUTO = PF.PRODUTO
 GROUP BY P.NOME_PRO
 ORDER BY P.NOME_PRO;
+
+use BDEX5_EVENTOS;
+# 1 - Quais são as atividades planejadas para um determinado evento, 
+# incluindo informações dos eventos e das atividades?
+SELECT
+E.NOME_EVENTO EVENTO,
+#AGRUPANDO OS -RESULTADOS- DE ACORDO COM O EVENTO
+GROUP_CONCAT(
+#CONCATENANDO AS INFORMAÇÕES DE ATIVIDADE (TEXTO)
+CONCAT(
+A.NOME_ATV,'|', #ADICIONA UM TEXTO COM UM SEPARADOR |
+A.DATA_ATV,'|',
+A.HORA_ATV) 
+#MUDANDO O SEPARADOR PADRÃO DE , PARA ||
+SEPARATOR ' || ') ATIVIDADES #NOME DA COLUNA RESULTANTE
+
+FROM ATIVIDADES A
+INNER JOIN EVENTOS E ON A.EVENTO_ATV = E.ID_EVENTO
+GROUP BY EVENTO
+ORDER BY EVENTO;
+
+# 2 - Quais são os participantes inscritos em uma determinada atividade,
+# incluindo aqueles que não têm inscrição registrada?
+SELECT
+P.NOME PARTICIPANTE,
+A.NOME_ATV ATIVIDADE
+FROM PARTICIPANTES P
+LEFT JOIN PARTICIPANTE_ATIVIDADE PA
+ON PA.INSCRICAO = P.NUM_INSCRICAO AND PA.CPF = P.CPF
+LEFT JOIN ATIVIDADES A
+ON A.ID_ATIVIDADE = PA.ATIVIDADE;
+
+# 3 - Quais são os eventos que ocorrerão em um determinado local, 
+# incluindo aqueles que não têm localização definida?
+SELECT E.NOME_EVENTO, L.NOME
+FROM EVENTOS E
+LEFT JOIN LOCAIS L ON E.LOCAL_EVENTO = L.ID_LOCAL;
+
+use BDEX6_CINEMA;
+# 1 - Quais são os espectadores que assistiram a um determinado filme 
+# em uma determinada data, incluindo informações dos espectadores e 
+# dos filmes?
+SELECT
+I.DATA_ING DATA,
+GROUP_CONCAT(CONCAT(E.NOME_ESPEC,' assistiu ', F.NOME_FILME) 
+SEPARATOR ' || ') INFORMAÇÕES
+FROM ESPECTADORES E
+JOIN INGRESSOS I
+	ON I.ESPECTADOR = E.ID_ESPEC
+JOIN SESSOES S
+	ON S.ID_SESSAO = I.SESSAO
+JOIN FILMES F
+	ON F.ID_FILME = S.FILME
+GROUP BY I.DATA_ING
+ORDER BY I.DATA_ING;
+
+# 2 - Quais são os filmes em exibição em uma determinada sala, incluindo
+# aqueles que não têm sessões programadas?
+# 3 - Quais são as sessões disponíveis para um determinado filme, 
+# incluindo informações das sessões e dos filmes?
+
