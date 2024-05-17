@@ -68,7 +68,7 @@ INSERT INTO SESSOES (ID_SESSAO, FILME, SALA) VALUES
     (4, 4, 4),  -- Amor à Primeira Vista na Sala 4
     (5, 5, 5),  -- A Grande Fuga na Sala 5
     (6, 6, 1),  -- O Mistério da Mansão na Sala 1
-    (6, 7, 2);  -- O Mistério da Mansão na Sala 2
+    (7, 6, 2);  -- O Mistério da Mansão na Sala 2
 
 -- Inserção na tabela INGRESSOS
 INSERT INTO INGRESSOS (ID_INGRESSO, DATA_ING, HORA_ING, SESSAO, ESPECTADOR) VALUES
