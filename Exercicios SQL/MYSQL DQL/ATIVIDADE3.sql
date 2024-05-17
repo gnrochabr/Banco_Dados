@@ -235,3 +235,43 @@ FROM SESSOES S
 JOIN FILMES F ON S.FILME = F.ID_FILME
 GROUP BY FILMES;
 
+USE BDEX7_TRANSACOESBANCARIAS;
+#1 - Quais são as transações realizadas por um determinado usuário, incluindo informações das transações e dos usuários?
+SELECT
+U.NOME_USER USUARIO,
+GROUP_CONCAT(
+CONCAT_WS(' ',C.NOME_BNC, 
+T.AGENCIA,T.CONTA,T.NATUREZA,
+CONCAT('R$ ',T.VALOR))
+SEPARATOR ' || ') TRANSACOES
+FROM USUARIOS U
+INNER JOIN TRANSACOES T ON U.ID_USER = T.USUARIO
+INNER JOIN CONTAS C ON C.AGENCIA = T.AGENCIA
+					AND C.CONTA = T.CONTA
+					AND C.COD_BANCO = T.COD_BANCO
+GROUP BY USUARIO;
+
+
+#2 - Quais são as transações de débito realizadas em uma determinada conta, incluindo aquelas que não têm registros de débito?
+SELECT 
+CONCAT_WS(' ',C.NOME_BNC, 
+C.AGENCIA,C.CONTA) CONTA,
+GROUP_CONCAT(CONCAT(' R$ ',T.VALOR)) VALOR
+FROM TRANSACOES T 
+RIGHT JOIN CONTAS C ON C.AGENCIA = T.AGENCIA
+					AND C.CONTA = T.CONTA
+					AND C.COD_BANCO = T.COD_BANCO
+WHERE T.NATUREZA = 'DEBITO' OR T.NATUREZA IS NULL
+GROUP BY CONTA;
+
+#3 - Quais são os saldos registrados em uma determinada agência e conta, incluindo aqueles que não têm registros de saldo?
+SELECT
+CONCAT_WS(' ',C.NOME_BNC, 
+C.AGENCIA,C.CONTA) CONTA,
+GROUP_CONCAT(CONCAT_WS(' - ',S.DATA_SALDO,
+CONCAT('R$ ',S.VALOR_SALDO)) SEPARATOR ' || ') SALDOS
+FROM SALDOS S
+RIGHT JOIN CONTAS C ON C.AGENCIA = S.AGENCIA
+					AND C.CONTA = S.CONTA
+					AND C.COD_BANCO = S.COD_BANCO
+GROUP BY CONTA;
