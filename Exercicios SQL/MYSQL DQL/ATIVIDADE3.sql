@@ -220,9 +220,18 @@ FROM (
 GROUP BY 
     DATA_ING;
 
-
 # 2 - Quais são os filmes em exibição em uma determinada sala, incluindo
 # aqueles que não têm sessões programadas?
+SELECT F.NOME_FILME FILMES, GROUP_CONCAT(SL.NOME) SALA
+FROM SALAS SL
+RIGHT JOIN SESSOES S ON S.SALA = SL.ID_SALA
+RIGHT JOIN FILMES F ON S.FILME = F.ID_FILME
+GROUP BY FILMES;
+
 # 3 - Quais são as sessões disponíveis para um determinado filme, 
 # incluindo informações das sessões e dos filmes?
+SELECT F.NOME_FILME FILMES, GROUP_CONCAT(S.ID_SESSAO) SESSAO
+FROM SESSOES S
+JOIN FILMES F ON S.FILME = F.ID_FILME
+GROUP BY FILMES
 
