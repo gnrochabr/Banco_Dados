@@ -198,19 +198,27 @@ use BDEX6_CINEMA;
 # 1 - Quais são os espectadores que assistiram a um determinado filme 
 # em uma determinada data, incluindo informações dos espectadores e 
 # dos filmes?
-SELECT
-I.DATA_ING DATA,
-GROUP_CONCAT(CONCAT(E.NOME_ESPEC,' assistiu ', F.NOME_FILME) 
-SEPARATOR ' || ') INFORMAÇÕES
-FROM ESPECTADORES E
-JOIN INGRESSOS I
-	ON I.ESPECTADOR = E.ID_ESPEC
-JOIN SESSOES S
-	ON S.ID_SESSAO = I.SESSAO
-JOIN FILMES F
-	ON F.ID_FILME = S.FILME
-GROUP BY I.DATA_ING
-ORDER BY I.DATA_ING;
+SELECT 
+    DATA_ING,
+    GROUP_CONCAT(INFO SEPARATOR '; ') AS INFO
+FROM (
+    SELECT 
+        I.DATA_ING,
+        CONCAT(GROUP_CONCAT(E.NOME_ESPEC SEPARATOR ', '), ' assistiram ', F.NOME_FILME) AS INFO
+    FROM 
+        INGRESSOS I
+    JOIN 
+        ESPECTADORES E ON I.ESPECTADOR = E.ID_ESPEC
+    JOIN 
+        SESSOES S ON S.ID_SESSAO = I.SESSAO
+    JOIN 
+        FILMES F ON F.ID_FILME = S.FILME
+    GROUP BY 
+        I.DATA_ING, F.NOME_FILME
+) AS SUBCONSULTA
+GROUP BY 
+    DATA_ING;
+
 
 # 2 - Quais são os filmes em exibição em uma determinada sala, incluindo
 # aqueles que não têm sessões programadas?
