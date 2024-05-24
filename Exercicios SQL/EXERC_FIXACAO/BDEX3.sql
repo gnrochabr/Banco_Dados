@@ -1,3 +1,4 @@
+#Usando a base de dados BDEX3_REDESOCIAL, responda:
 
 USE BDEX3_REDESOCIAL;
 #1. Exibir todas as informações da tabela `USUARIOS`.
