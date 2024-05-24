@@ -5,7 +5,7 @@
 # 3 - Listar os nomes dos médicos e as especialidades em que trabalham.
 # 4 - Exibir os detalhes das consultas: ID da consulta, data, hora, nome do médico e nome do paciente.
 # 5 - Listar o nome dos pacientes e quantas consultas cada um fez.
-# 6 - Mostrar as especialidades de médicos que fizeram consultas em 2023.
+# 6 - Mostrar as especialidades de médicos que fizeram consultas em 2024.
 # 7 - Listar todos os departamentos, ordenados pelo nome da especialidade de A a Z.
 # 8 - Mostrar os nomes e e-mails dos médicos que não têm telefone cadastrado.
 # 9 - Exibir os nomes dos pacientes que têm consultas com médicos do departamento de Cardiologia.
