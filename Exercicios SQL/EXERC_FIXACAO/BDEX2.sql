@@ -1,5 +1,4 @@
 #Usando a base de dados BDEX2_PASSAGENS_AEREAS, responda:
-
 USE BDEX2_PASSAGENS_AEREAS;
 
 # 1 - Exibir todas as informações da tabela PASSAGEIROS.
