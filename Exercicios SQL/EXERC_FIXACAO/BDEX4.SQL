@@ -1,4 +1,6 @@
+#Usando a base de dados BDEX4_ESTOQUE, responda:
 USE BDEX4_ESTOQUE;
+
 #1. Exibir todas as informações da tabela `PRODUTOS`.
 #2. Mostrar os nomes e preços dos produtos que custam mais de 50,00.
 #3. Listar os nomes e cidades dos fornecedores.
