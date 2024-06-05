@@ -1,16 +1,202 @@
 use BDEX5_EVENTOS;
 #1. Exibir todas as informações da tabela PARTICIPANTES.
+SELECT
+	*
+FROM
+	PARTICIPANTES;
+    
 #2. Mostrar os nomes e empresas dos participantes que nasceram depois do ano 1990.
+SELECT
+	NOME,
+    EMPRESA
+FROM
+	PARTICIPANTES
+WHERE
+	YEAR(DATA_NASC) > 1900;
+
 #3. Listar os nomes dos eventos e as entidades organizadoras.
+DESC
+	EVENTOS;
+SELECT
+	NOME_EVENTO,
+    ENTIDADE_EVENTO
+FROM
+	EVENTOS;
+
 #4. Exibir os detalhes das atividades: ID da atividade, nome da atividade, data, hora, nome do evento.
+SELECT
+	ATIVIDADES.ID_ATIVIDADE,
+    ATIVIDADES.NOME_ATV,
+    ATIVIDADES.DATA_ATV,
+    ATIVIDADES.HORA_ATV,
+    EVENTOS.NOME_EVENTO
+FROM
+	ATIVIDADES
+JOIN
+	EVENTOS 
+ON 
+	EVENTOS.ID_EVENTO = ATIVIDADES.EVENTO_ATV;
+
+
 #5. Listar o nome dos participantes e quantas atividades cada um participou.
+SHOW TABLES;
+DESC PARTICIPANTES;
+DESC ATIVIDADES;
+DESC PARTICIPANTE_ATIVIDADE; 
+
+SELECT
+	PARTICIPANTES.NOME, #PRT.NOME
+    COUNT(PARTICIPANTE_ATIVIDADE.ATIVIDADE)#PA.ATIVIDADE
+FROM
+	PARTICIPANTES #AS PRT
+JOIN
+	PARTICIPANTE_ATIVIDADE #AS PA
+ON
+	PARTICIPANTES.NUM_INSCRICAO = PARTICIPANTE_ATIVIDADE.INSCRICAO
+    #PRT.INSCRICAO = PA.INSCRICAO
+    AND
+    PARTICIPANTES.CPF = PARTICIPANTE_ATIVIDADE.CPF
+    #PRT.CPF = PA.CPF
+GROUP BY
+	PARTICIPANTES.NOME; #PRT.NOME
+    
 #6. Mostrar os nomes dos eventos realizados em 2023.
+DESC EVENTOS;
+SELECT 
+	NOME_EVENTO
+FROM 
+	EVENTOS
+WHERE 
+	YEAR(DATA_EVENTO) = 2023;
+
 #7. Listar todos os locais, ordenados pelo nome da cidade de A a Z.
+SHOW TABLES;
+DESC LOCAIS;
+SELECT 
+	NOME
+FROM 
+	LOCAIS
+ORDER BY 
+	CIDADE ASC;
+
 #8. Mostrar os nomes e CPFs dos participantes que não têm empresa cadastrada.
+DESC PARTICIPANTES;
+SELECT
+	NOME,CPF
+FROM
+	PARTICIPANTES
+WHERE
+	EMPRESA IS NULL;
+	
 #9. Exibir os nomes dos participantes que estão inscritos em eventos realizados no local com nome 'Centro de Convenções'.
+SELECT
+	PRT.NOME
+FROM
+	PARTICIPANTES PRT
+JOIN
+	PARTICIPANTE_EVENTO PE
+    ON PRT.NUM_INSCRICAO = PE.INSCRICAO
+    AND PRT.CPF = PE.CPF
+JOIN
+	EVENTOS EVT
+    ON EVT.ID_EVENTO = PE.EVENTO
+WHERE
+	EVT.LOCAL_EVENTO LIKE '%Centro de Convenções%';
+
 #10. Para cada entidade organizadora, mostrar o nome da entidade e a média de eventos realizados.
+SHOW TABLES;
+DESC EVENTOS;
+
+SELECT
+	ENTIDADE,
+    AVG(EVENTO) AS MEDIA
+FROM
+	(SELECT
+		ENTIDADE_EVENTO AS ENTIDADE, 
+        COUNT(ID_EVENTO) AS EVENTO
+	FROM
+		EVENTOS
+	GROUP BY
+		ENTIDADE) AS CONSULTA_BASE 
+        #TABELA 'VIRTUAL' COM QUANTIDADE DE EVENTOS POR ENTIDADE
+GROUP BY
+	ENTIDADE;
+    
 #11. Contar quantos participantes têm uma empresa cadastrada.
+SELECT
+	COUNT(*) AS COM_EMPRESA
+FROM
+	PARTICIPANTES
+WHERE
+	EMPRESA IS NOT NULL;
+
 #12. Listar os nomes dos participantes que participaram de mais de 5 atividades.
+SELECT
+	PART.NOME
+FROM
+	PARTICIPANTES PART
+LEFT JOIN
+	PARTICIPANTE_ATIVIDADE PA
+ON
+	PA.CPF = PART.CPF AND PA.INSCRICAO = PART.NUM_INSCRICAO
+HAVING
+	COUNT(PA.ATIVIDADE) > 5;
+
 #13. Mostrar o nome dos participantes e a data da última atividade que eles participaram.
+SELECT
+	PART.NOME,
+    MAX(ATV.DATA_ATV)
+FROM
+	PARTICIPANTES PART
+JOIN
+	PARTICIPANTE_ATIVIDADE PA
+ON
+	PA.CPF = PART.CPF AND PA.INSCRICAO = PART.NUM_INSCRICAO
+JOIN
+	ATIVIDADES ATV
+ON
+	ATV.ID_ATIVIDADE = PA.ATIVIDADE
+GROUP BY
+	PART.NOME;
+
 #14. Contar quantas atividades cada evento possui.
+DESC ATIVIDADES;
+DESC EVENTOS;
+SELECT
+	EVT.NOME_EVENTO,
+    COUNT(ATV.ID_ATIVIDADE) QUANTIDADE
+FROM
+	EVENTOS EVT
+LEFT JOIN
+	ATIVIDADES ATV
+ON
+	ATV.EVENTO_ATV = EVT.ID_EVENTO
+GROUP BY
+	EVT.NOME_EVENTO;
+
 #15. Para cada participante que participou de um evento, mostrar o CPF, o nome e a porcentagem de eventos em relação ao total de eventos realizados.
+SELECT
+	NOME,
+    CPF,
+    CONCAT(ROUND((QUANTIDADE/TOTAL)*100,1),'%') AS PORCENTAGEM
+FROM (
+	SELECT 
+		PART.NOME AS NOME,
+        PART.CPF AS CPF,
+        COUNT(PEVT.EVENTO) AS QUANTIDADE
+	FROM
+		PARTICIPANTES PART
+	LEFT JOIN
+		PARTICIPANTE_EVENTO PEVT
+		ON PEVT.INSCRICAO = PART.NUM_INSCRICAO
+		AND PEVT.CPF = PART.CPF
+	GROUP BY
+		PART.NOME
+	 ) AS DADOS_PESSOA
+,(
+	SELECT 
+		COUNT(*) AS TOTAL
+    FROM 
+		EVENTOS
+ ) AS DADOS_GERAL
+;
