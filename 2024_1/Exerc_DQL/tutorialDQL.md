@@ -281,5 +281,3 @@ WHERE idade = (SELECT MAX(idade) FROM pessoas);
 - **Performance:** Utilize índices nas colunas frequentemente usadas em cláusulas `WHERE`, `ORDER BY`, e `JOIN` para melhorar a performance das consultas.
 - **Legibilidade:** Escreva consultas claras e bem formatadas para facilitar a manutenção e compreensão do código.
 - **Segurança:** Evite SQL Injection utilizando parâmetros preparados (prepared statements) ao construir consultas dinâmicas.
-
-Este manual cobre os fundamentos e a aplicação prática dos comandos DQL no MySQL, incluindo consultas sobre consultas. Compreender e utilizar adequadamente cada componente permite realizar consultas eficientes e eficazes, atendendo às necessidades específicas de recuperação de dados no banco de dados.
