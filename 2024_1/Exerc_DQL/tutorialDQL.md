@@ -14,7 +14,7 @@ ORDER BY coluna
 LIMIT número;
 
 # Componentes do Comando SELECT
-# # 1. SELECT
+# 1. SELECT
 # Uso
 # - Para especificar as colunas que se deseja recuperar da tabela.
 
@@ -26,7 +26,7 @@ LIMIT número;
 SELECT nome, idade
 FROM pessoas;
 
-# # 2. FROM
+# 2. FROM
 # Uso
 # - Especifica a tabela de onde os dados serão recuperados.
 
@@ -38,39 +38,7 @@ FROM pessoas;
 SELECT nome, idade
 FROM pessoas;
 
-# # 3. WHERE
-# Uso
-# - Filtra registros com base em condições específicas.
-
-# Critérios
-# - Use `WHERE` para restringir os resultados apenas aos dados que atendem a
-
-# Componentes do Comando SELECT
-# # 1. SELECT
-# Uso
-# - Para especificar as colunas que se deseja recuperar da tabela.
-
-# Critérios
-# - Usado sempre que se deseja recuperar dados do banco.
-# - Escolha apenas as colunas necessárias para reduzir a carga de processamento e largura de banda.
-
-# Exemplo
-SELECT nome, idade
-FROM pessoas;
-
-# # 2. FROM
-# Uso
-# - Especifica a tabela de onde os dados serão recuperados.
-
-# Critérios
-# - Obrigatório em todas as consultas `SELECT`.
-# - Certifique-se de que a tabela existe e tem os dados que você precisa.
-
-# Exemplo
-SELECT nome, idade
-FROM pessoas;
-
-# # 3. WHERE
+# 3. WHERE
 # Uso
 # - Filtra registros com base em condições específicas.
 
