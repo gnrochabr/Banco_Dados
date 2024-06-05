@@ -5,13 +5,15 @@
 
 # Estrutura Básica do Comando SELECT
 ### A sintaxe básica de um comando `SELECT` é:
+
+```sql
 SELECT #coluna1, coluna2, ...
 FROM tabela
 WHERE condição
 GROUP BY coluna
 HAVING condição
 ORDER BY coluna
-LIMIT número;
+LIMIT número; ```
 
 # Componentes do Comando SELECT
 # 1. SELECT
@@ -23,8 +25,9 @@ LIMIT número;
 ### - Escolha apenas as colunas necessárias para reduzir a carga de processamento e largura de banda.
 
 # Exemplo
+```sql
 SELECT nome, idade
-FROM pessoas;
+FROM pessoas; ```
 
 # 2. FROM
 # Uso
@@ -36,7 +39,7 @@ FROM pessoas;
 
 # Exemplo
 SELECT nome, idade
-FROM pessoas;
+FROM pessoas; ```
 
 # 3. WHERE
 # Uso
@@ -48,13 +51,15 @@ FROM pessoas;
 ### - Utilize índices nas colunas referenciadas no `WHERE` para melhorar a performance.
 
 # Exemplos
+```sql
 SELECT nome, idade
 FROM pessoas
-WHERE idade > # 18;
+WHERE idade > # 18; ```
 
+```sql
 SELECT nome, cidade
 FROM pessoas
-WHERE cidade = 'São Paulo';
+WHERE cidade = 'São Paulo'; ```
 
 # 4. ORDER BY
 # Uso
@@ -66,9 +71,10 @@ WHERE cidade = 'São Paulo';
 ### - Pode usar `ASC` para ordem crescente e `DESC` para ordem decrescente.
 
 # Exemplo
+```sql
 SELECT nome, idade
 FROM pessoas
-ORDER BY idade DESC;
+ORDER BY idade DESC; ```
 
 # 5. GROUP BY
 # Uso
@@ -80,9 +86,10 @@ ORDER BY idade DESC;
 ### - Todas as colunas no `SELECT` que não são usadas em funções de agregação devem estar no `GROUP BY`.
 
 # Exemplo
+```sql
 SELECT cidade, COUNT(*)
 FROM pessoas
-GROUP BY cidade;
+GROUP BY cidade; ```
 
 # 6. HAVING
 # Uso
@@ -95,14 +102,16 @@ GROUP BY cidade;
 ### - Não use `HAVING` sem `GROUP BY` em consultas comuns. Em situações raras, pode ser usado com funções de agregação diretamente sem `GROUP BY`.
 
 # Exemplos
+```sql
 SELECT cidade, COUNT(*)
 FROM pessoas
 GROUP BY cidade
-HAVING COUNT(*) > # 1;
+HAVING COUNT(*) > # 1; ```
 
+```sql
 SELECT SUM(salario) AS total_salario
 FROM funcionarios
-HAVING total_salario > # 100000;
+HAVING total_salario > # 100000; ```
 
 # 7. JOINs
 # Uso
@@ -119,28 +128,32 @@ HAVING total_salario > # 100000;
 
 # Exemplos
 ### - INNER JOIN
+```sql
 SELECT p.nome, e.nome_empresa
 FROM pessoas p
-INNER JOIN empresas e ON p.empresa_id = e.id;
+INNER JOIN empresas e ON p.empresa_id = e.id; ```
 
 ### - LEFT JOIN
+```sql
 SELECT p.nome, e.nome_empresa
 FROM pessoas p
-LEFT JOIN empresas e ON p.empresa_id = e.id;
+LEFT JOIN empresas e ON p.empresa_id = e.id; ```
 
 ### - RIGHT JOIN
+```sql
 SELECT p.nome, e.nome_empresa
 FROM pessoas p
-RIGHT JOIN empresas e ON p.empresa_id = e.id;
+RIGHT JOIN empresas e ON p.empresa_id = e.id; ```
 
 ### - FULL JOIN (não suportado diretamente no MySQL, mas pode ser simulado com UNION)
+```sql
 SELECT p.nome, e.nome_empresa
 FROM pessoas p
 LEFT JOIN empresas e ON p.empresa_id = e.id
 UNION
 SELECT p.nome, e.nome_empresa
 FROM pessoas p
-RIGHT JOIN empresas e ON p.empresa_id = e.id;
+RIGHT JOIN empresas e ON p.empresa_id = e.id; ```
 
 # 8. LIMIT
 # Uso
@@ -151,9 +164,10 @@ RIGHT JOIN empresas e ON p.empresa_id = e.id;
 ### - Não use `LIMIT` sem necessidade, pois pode ocultar registros que precisam ser analisados.
 
 # Exemplo
+```sql
 SELECT nome, idade
 FROM pessoas
-LIMIT 5;
+LIMIT 5; ```
 
 # 9. Subconsultas
 ### - Subconsultas, ou consultas aninhadas, são consultas SQL dentro de outras consultas SQL. Elas são usadas para realizar operações que requerem o uso de resultados de outras consultas.
@@ -170,66 +184,79 @@ LIMIT 5;
 
 # Exemplos de Subconsultas
 # Subconsulta Escalar:
+```sql
 SELECT nome, idade
 FROM pessoas
-WHERE idade = (SELECT MAX(idade) FROM pessoas);
+WHERE idade = (SELECT MAX(idade) FROM pessoas); ```
 
 # Subconsulta de Linha Única:
+```sql
 SELECT nome, idade
 FROM pessoas
-WHERE (cidade, idade) = (SELECT cidade, MAX(idade) FROM pessoas GROUP BY cidade LIMIT # 1);
+WHERE (cidade, idade) = (SELECT cidade, MAX(idade) FROM pessoas GROUP BY cidade LIMIT # 1); ```
 
 # Subconsulta de Múltiplas Linhas:
+```sql
 SELECT nome, idade
 FROM pessoas
-WHERE cidade IN (SELECT cidade FROM cidades WHERE populacao > # 100000);
+WHERE cidade IN (SELECT cidade FROM cidades WHERE populacao > # 100000); ```
 
 Subconsulta no FROM:
+```sql
 SELECT sub.cidade, COUNT(*)
 FROM (SELECT cidade FROM pessoas WHERE idade > # 18) AS sub
-GROUP BY sub.cidade;
+GROUP BY sub.cidade; ```
 
 # Subconsulta com EXISTS:
+```sql
 SELECT nome
 FROM pessoas p
-WHERE EXISTS (SELECT # 1 FROM empregados e WHERE e.pessoa_id = p.id);
+WHERE EXISTS (SELECT # 1 FROM empregados e WHERE e.pessoa_id = p.id); ```
 
 
 # Exemplos Práticos
 
 # Consulta Simples
+```sql
 SELECT nome, idade
-FROM pessoas;
+FROM pessoas; ```
 
 # Consulta com Filtro
+
+```sql
 SELECT nome, idade
 FROM pessoas
-WHERE idade > # 18;
+WHERE idade > # 18; ```
 
 # Consulta com Ordenação
+```sql
 SELECT nome, idade
 FROM pessoas
-ORDER BY idade DESC;
+ORDER BY idade DESC; ```
 
 # Consulta com Agrupamento
+```sql
 SELECT cidade, COUNT(*)
 FROM pessoas
-GROUP BY cidade;
+GROUP BY cidade; ```
 
 # Consulta com Join
+```sql
 SELECT p.nome, e.nome_empresa
 FROM pessoas p
-INNER JOIN empresas e ON p.empresa_id = e.id;
+INNER JOIN empresas e ON p.empresa_id = e.id; ```
 
 # Consulta com Limite
+```sql
 SELECT nome, idade
 FROM pessoas
-LIMIT 5;
+LIMIT 5; ```
 
 # Consulta com Subconsulta
+```sql
 SELECT nome, idade
 FROM pessoas
-WHERE idade = (SELECT MAX(idade) FROM pessoas);
+WHERE idade = (SELECT MAX(idade) FROM pessoas); ```
 
 # Considerações Finais
 ### - Performance: Utilize índices nas colunas frequentemente usadas em cláusulas `WHERE`, `ORDER BY`, e `JOIN` para melhorar a performance das consultas.
