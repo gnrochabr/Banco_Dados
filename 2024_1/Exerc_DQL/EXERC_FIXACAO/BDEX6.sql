@@ -1,16 +1,138 @@
 use BDEX6_CINEMA;
 #1. Criar uma consulta para exibir todas as informações da tabela ESPECTADORES.
+SELECT * FROM ESPECTADORES;
+
+#FORMATAÇÃO IDENTADA
+SELECT
+	*
+FROM
+	espectadores;
+
+
 #2. Escrever uma consulta para mostrar os nomes e e-mails dos espectadores que nasceram antes de 1995.
+DESC ESPECTADORES; #DESCOBRIR QUAIS SÃO AS COLUNAS DE ESPECTADORES
+
+SELECT NOME_ESPEC,EMAIL_ESPEC
+FROM ESPECTADORES
+WHERE YEAR(DATA_NASC) < 1995;
+
+#FORMATAÇÃO IDENTADA
+SELECT
+	nome_espec,
+    email_espec
+FROM
+	espectadores
+WHERE
+	YEAR(data_nasc) < 1995;
+
 #3. Listar os nomes das salas de cinema e suas capacidades.
+SHOW TABLES FROM BDEX6_CINEMA; #SABER QUAIS TABELAS EXISTEM
+
+DESC SALAS; #QUAIS SÃO AS COLUNAS DA TABELA SALAS
+
+SELECT NOME, CAPACIDADE
+FROM SALAS;
+
 #4. Exibir os detalhes das sessões de cinema: ID da sessão, nome do filme, nome da sala.
+DESC SESSOES;
+DESC FILMES;
+DESC SALAS;
+
+SELECT SS.ID_SESSAO, FIL.NOME_FILME, SAL.NOME
+FROM SESSOES SS
+JOIN FILMES FIL ON SS.FILME = FIL.ID_FILME
+JOIN SALAS SAL ON SS.SALA = SAL.ID_SALA;
+
 #5. Listar o nome e o distribuidor dos filmes com tempo de exibição superior a 120 minutos.
+DESC FILMES;
+
+SELECT NOME_FILME, DISTRIBUIDOR_FILME
+FROM FILMES
+WHERE TEMPO_FILME > 120;
+
 #6. Mostrar as informações das sessões que exibiram filmes do diretor "Christopher Nolan".
+DESC SESSOES;
+DESC FILMES;
+
+SELECT SS.ID_SESSAO,FIL.NOME_FILME,SAL.NOME
+FROM SESSOES SS
+JOIN FILMES FIL ON SS.FILME = FIL.ID_FILME
+JOIN SALAS SAL ON SS.SALA = SAL.ID_SALA
+WHERE FIL.DIRETOR = 'Christopher Nolan';
+
 #7. Listar os nomes e as capacidades das salas de cinema ordenadas pela capacidade de forma decrescente.
+DESC SALAS;
+SELECT NOME, CAPACIDADE
+FROM SALAS
+ORDER BY CAPACIDADE DESC;
+
 #8. Exibir os detalhes dos ingressos: ID do ingresso, data, hora, nome do filme e nome do espectador.
+DESC INGRESSOS;
+DESC FILMES;
+DESC ESPECTADORES;
+
+SELECT ING.ID_INGRESSO,ING.DATA_ING, ING.HORA_ING, FIL.NOME_FILME,ESP.NOME_ESPEC
+FROM ESPECTADORES ESP
+JOIN INGRESSOS ING ON ING.ESPECTADOR = ESP.ID_ESPEC
+JOIN SESSOES SS ON SS.ID_SESSAO = ING.SESSAO
+JOIN FILMES FIL ON SS.FILME = FIL.ID_FILME;
+
 #9. Mostrar os nomes e as idades dos espectadores que têm telefone cadastrado.
+DESC ESPECTADORES;
+
+SELECT NOME_ESPEC, TIMESTAMPDIFF(YEAR,DATA_NASC,CURDATE()) IDADE
+FROM ESPECTADORES
+WHERE TEL_ESPEC IS NOT NULL AND TEL_ESPEC <> ' ';
+
 #10. Listar os nomes dos filmes que foram exibidos em mais de uma sessão.
+SELECT FIL.NOME_FILME, COUNT(SS.ID_SESSAO) CONTAGEM
+FROM FILMES FIL
+JOIN SESSOES SS ON SS.FILME = FIL.ID_FILME
+GROUP BY FIL.NOME_FILME
+HAVING CONTAGEM > 1;
+
 #11. Para cada sala de cinema, mostrar o nome da sala e a quantidade total de ingressos vendidos.
+DESC SALAS;
+INSERT INTO SALAS VALUES (10,'SALA TESTE',300);
+
+SELECT SAL.NOME SALA, COUNT(ING.ID_INGRESSO) QUANTIDADE
+FROM SALAS SAL
+LEFT JOIN SESSOES SS ON SS.SALA = SAL.ID_SALA
+LEFT JOIN INGRESSOS ING ON ING.SESSAO = SS.ID_SESSAO
+GROUP BY SAL.NOME;
+
 #12. Contar quantos espectadores têm um e-mail cadastrado.
+DESC ESPECTADORES;
+
+SELECT COUNT(ID_ESPEC) COM_EMAIL
+FROM ESPECTADORES
+WHERE EMAIL_ESPEC IS NOT NULL OR EMAIL_ESPEC <> ' ';
+
 #13. Listar os nomes dos filmes que foram exibidos em sessões agendadas para o dia de hoje.
+DESC SESSOES;
+DESC INGRESSOS;
+
+SELECT FIL.NOME_FILME
+FROM FILMES FIL
+JOIN SESSOES SS ON SS.FILME = FIL.ID_FILME
+JOIN INGRESSOS ING ON ING.SESSAO = SS.ID_SESSAO
+WHERE ING.DATA_ING = CURDATE();
+
 #14. Exibir os detalhes das sessões que exibiram filmes com tempo de exibição inferior a 90 minutos.
+SELECT FIL.NOME_FILME,SS.SALA FROM SESSOES SS
+JOIN FILMES FIL ON FIL.ID_FILME = SS.FILME
+WHERE FIL.TEMPO_FILME < 90;
+
 #15. Mostrar o nome do filme e a data da sessão para todas as sessões agendadas para o próximo sábado.
+DESC INGRESSOS;
+REPLACE INTO INGRESSOS VALUES (12,'2024-06-08','12:00:00',1,2);
+
+SELECT FIL.NOME_FILME, ING.DATA_ING
+FROM INGRESSOS ING
+JOIN SESSOES SS ON SS.ID_SESSAO = ING.SESSAO
+JOIN FILMES FIL ON SS.FILME = FIL.ID_FILME
+WHERE DAYOFWEEK(ING.DATA_ING) = 7 
+AND ING.DATA_ING <= (CURDATE()+7)
+AND ING.DATA_ING > CURDATE();
+# DAYOFWEEK - RETORNA UM INTEIRO CORRESPONDENTE AO DIA 1-7 | DOMINGO = 1
+# CURDATE()+7 - RETORNA O DIA DE HOJE SOMADO + SETE DIAS (SEMANA)
