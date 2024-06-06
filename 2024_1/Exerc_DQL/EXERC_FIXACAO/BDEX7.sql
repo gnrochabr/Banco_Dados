@@ -32,9 +32,9 @@ DESC TRANSACOES;
 DESC USUARIOS;
 SELECT
 	TRANS.ID_TRANS AS ID_TRANSACAO,
-    TRANS.VALOR,
-    TRANS.NATUREZA,
-    USR.NOME_USER AS NOME_USUARIO
+    	TRANS.VALOR,
+    	TRANS.NATUREZA,
+    	USR.NOME_USER AS NOME_USUARIO
 FROM
 	TRANSACOES TRANS
 JOIN
@@ -83,8 +83,8 @@ FROM
 	transacoes trans
 JOIN
 	contas cnt ON cnt.AGENCIA = trans.AGENCIA
-    AND cnt.COD_BANCO = trans.COD_BANCO
-    AND cnt.CONTA = trans.CONTA
+	AND cnt.COD_BANCO = trans.COD_BANCO
+	AND cnt.CONTA = trans.CONTA
 WHERE
 	cnt.NOME_BNC = 'banco central'; # ou cnt.NOME_BNC LIKE '%banco central%'
 
@@ -115,7 +115,7 @@ SET SESSION sql_mode = (SELECT REPLACE(@@sql_mode, 'ONLY_FULL_GROUP_BY', ''));
 
 SELECT 
 	usr.nome_user as Usuario,
-    sld.valor_saldo
+	sld.valor_saldo
 FROM
 	usuarios usr
 JOIN
@@ -124,8 +124,8 @@ JOIN
 	contas cnt ON cnt.usuario = trans.usuario
 JOIN
 	saldos sld ON sld.agencia = cnt.agencia
-    AND sld.cod_banco = cnt.cod_banco
-    AND sld.conta = cnt.conta
+	AND sld.cod_banco = cnt.cod_banco
+	AND sld.conta = cnt.conta
 GROUP BY
 	sld.agencia, sld.conta,sld.cod_banco
 HAVING
