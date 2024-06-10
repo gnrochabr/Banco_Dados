@@ -11,6 +11,8 @@ A sintaxe básica de um comando `SELECT` é:
 SELECT coluna1, coluna2, ...
 FROM tabela
 WHERE condição
+JOIN tabela
+ON condição
 GROUP BY coluna
 HAVING condição
 ORDER BY coluna
