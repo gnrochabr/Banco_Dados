@@ -10,8 +10,9 @@
   - **DDL (Data Definition Language)**
   - **DML (Data Manipulation Language)**
   - **DQL (Data Query Language)**
-Exemplo:
-**DDL - EST_CASO_I.sql
+
+**Exemplo:**
+**DDL** - EST_CASO_I.sql
       - EST_CASO_II.sql
       - EST_CASO_III.sql
       - EST_CASO_IV.sql
