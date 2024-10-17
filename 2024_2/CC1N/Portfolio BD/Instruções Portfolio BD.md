@@ -12,10 +12,11 @@
   - **DQL (Data Query Language)**
 
 **Exemplo:**
-**DDL** - EST_CASO_I.sql
-      - EST_CASO_II.sql
-      - EST_CASO_III.sql
-      - EST_CASO_IV.sql
+**DDL** 
+- EST_CASO_I.sql
+- EST_CASO_II.sql
+- EST_CASO_III.sql
+- EST_CASO_IV.sql
 
 Esses exercícios serão avaliados com base no conteúdo prático visto em aula. Organize o código adequadamente para facilitar a correção.
 
