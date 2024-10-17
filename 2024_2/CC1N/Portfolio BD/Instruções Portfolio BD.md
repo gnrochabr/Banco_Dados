@@ -1,7 +1,7 @@
 # Instruções para Submissão dos Exercícios de Banco de Dados
 
 ## Passo 1: Faça o Fork do Repositório
-1. Acesse o repositório oficial da disciplina no GitHub: [Link para o Repositório](https://github.com/gnrochabr/Banco_Dados/edit/main/2024_2/CC1N/Portfolio%20BD/).
+1. Acesse o repositório oficial da disciplina no GitHub: [Link para o Repositório](https://github.com/gnrochabr/CC1N_20242/).
 2. No canto superior direito, clique no botão **Fork** para criar uma cópia do repositório em sua conta do GitHub.
 
 ## Passo 2: Organize os Estudos de Caso
@@ -10,6 +10,11 @@
   - **DDL (Data Definition Language)**
   - **DML (Data Manipulation Language)**
   - **DQL (Data Query Language)**
+Exemplo:
+**DDL - EST_CASO_I.sql
+      - EST_CASO_II.sql
+      - EST_CASO_III.sql
+      - EST_CASO_IV.sql
 
 Esses exercícios serão avaliados com base no conteúdo prático visto em aula. Organize o código adequadamente para facilitar a correção.
 
