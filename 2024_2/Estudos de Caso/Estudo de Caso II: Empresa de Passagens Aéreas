@@ -1,0 +1,16 @@
+A FlyHigh Airlines é uma empresa de aviação que opera voos domésticos e internacionais e deseja implementar um novo sistema de banco de dados para otimizar suas operações. Esse sistema é fundamental para o gerenciamento de informações críticas, como dados dos clientes, voos, aeronaves, reservas, funcionários e aeroportos, todos organizados de maneira única para garantir a integridade das operações.
+
+Os Passageiros são os clientes que utilizam os serviços da FlyHigh Airlines. Com uma base de clientes cada vez maior, cada passageiro é registrado no sistema com informações detalhadas, como nome, CPF, telefone e endereço. Cada passageiro pode realizar quantas reservas desejar, o que significa que muitos registros de reservas podem estar associados a um único passageiro ao longo do tempo.
+
+Os Voos realizados pela FlyHigh são uma peça central nas operações da empresa. Cada voo, identificado de maneira única por um código, permite rastrear com precisão o itinerário, desde a origem até o destino, incluindo os horários de partida e chegada. Um voo específico pode transportar vários passageiros, e, consequentemente, pode estar vinculado a várias reservas, cada uma correspondente a um dos passageiros que compraram passagem para aquele voo.
+
+Cada Aeroporto onde a FlyHigh opera é essencial para a definição das rotas dos voos. Cada aeroporto, com seu código único, é o ponto de partida ou chegada de muitos voos. Esse vínculo entre aeroportos e voos destaca como um único aeroporto pode estar associado a diversas operações diárias, seja como ponto de origem ou como destino final de voos diferentes.
+
+A frota de Aeronaves da FlyHigh é composta por vários modelos, cada um com um identificador exclusivo. Uma única aeronave pode operar diversos voos ao longo de sua vida útil, sendo atribuída a diferentes rotas e horários. Essa flexibilidade é essencial para maximizar o uso da frota, associando uma aeronave a múltiplos voos em um dia ou ao longo de várias semanas.
+
+Os Funcionários da FlyHigh desempenham funções variadas e essenciais para a realização dos voos. Cada funcionário, registrado com um identificador exclusivo, pode trabalhar em diversos voos, cumprindo diferentes papéis. Da mesma forma, cada voo depende da colaboração de vários funcionários, desde pilotos até comissários de bordo, reforçando a necessidade de uma equipe diversificada para cada operação.
+
+Quando um passageiro decide viajar, ele faz uma Reserva. Cada reserva é associada a um único passageiro e a um voo específico, mas um passageiro pode ter múltiplas reservas ao longo do tempo, dependendo de quantos voos ele deseja tomar. Da mesma forma, um voo pode ter diversas reservas associadas, correspondendo ao número de passageiros que adquiriram passagem para aquela viagem específica.
+
+Além disso, a FlyHigh assegura que cada Operação de Voo esteja devidamente registrada, associando os voos a uma equipe específica de funcionários. Essa associação é fundamental para a gestão das tripulações e para o cumprimento das regulamentações de segurança, garantindo que cada voo tenha a tripulação qualificada necessária.
+
