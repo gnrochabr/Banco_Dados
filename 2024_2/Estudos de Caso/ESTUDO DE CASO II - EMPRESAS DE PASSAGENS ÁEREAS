@@ -1,3 +1,5 @@
+ESTUDO DE CASO II - EMPRESAS DE PASSAGENS ÁEREAS
+
 A FlyHigh Airlines é uma empresa de aviação que opera voos domésticos e internacionais e deseja implementar um novo sistema de banco de dados para otimizar suas operações. Esse sistema é fundamental para o gerenciamento de informações críticas, como dados dos clientes, voos, aeronaves, reservas, funcionários e aeroportos, todos organizados de maneira única para garantir a integridade das operações.
 
 Os Passageiros são os clientes que utilizam os serviços da FlyHigh Airlines. Com uma base de clientes cada vez maior, cada passageiro é registrado no sistema com informações detalhadas, como nome, CPF, telefone e endereço. Cada passageiro pode realizar quantas reservas desejar, o que significa que muitos registros de reservas podem estar associados a um único passageiro ao longo do tempo.
