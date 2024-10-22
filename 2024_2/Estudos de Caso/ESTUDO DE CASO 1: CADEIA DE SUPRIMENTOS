@@ -1,0 +1,15 @@
+ESTUDO DE CASO 1: CADEIA DE SUPRIMENTOS
+
+Uma empresa multinacional de manufatura está desenvolvendo um sistema para gerenciar sua cadeia de suprimentos, que inclui fornecedores, produtos, pedidos de compra, recebimento de materiais, inventário e distribuição para filiais. O sistema precisa centralizar e automatizar todas as operações relacionadas ao fluxo de materiais, desde o pedido inicial até a entrega final.
+
+Os fornecedores, que são empresas parceiras responsáveis pelo fornecimento de matérias-primas e componentes, são identificados por um código único de fornecedor. O sistema deve armazenar informações como nome da empresa, endereço, país de origem, pessoa de contato, telefone, e histórico de fornecimento (ex.: datas e quantidades entregues). Cada fornecedor pode fornecer diversos produtos diferentes, e cada produto pode ser fornecido por vários fornecedores, dependendo de contratos e acordos comerciais.
+
+Os produtos são identificados por um código único e possuem atributos como nome do produto, descrição, especificações técnicas, unidade de medida (ex.: quilos, litros, unidades), e preço unitário. Para cada produto, o sistema deve também manter um registro de estoque, que inclui a quantidade atual em estoque, localização no armazém, e ponto de ressuprimento (nível de estoque que dispara a necessidade de novos pedidos).
+
+Os pedidos de compra são gerados quando o estoque de determinado produto atinge o ponto de ressuprimento. Cada pedido de compra é identificado por um número único e contém informações como data do pedido, data esperada de entrega, quantidade solicitada de cada produto, e status do pedido (em processamento, enviado, recebido, cancelado). Cada pedido de compra está associado a um único fornecedor, mas pode incluir múltiplos produtos.
+
+O recebimento de materiais é o processo de verificação e aceitação dos produtos entregues pelo fornecedor. Quando um pedido de compra é entregue, o sistema deve registrar a data de recebimento, a quantidade recebida de cada produto, e a condição dos materiais (aceito, rejeitado). Se um lote de materiais for rejeitado, o sistema deve registrar o motivo da rejeição e iniciar um processo de devolução ou substituição.
+
+Finalmente, a distribuição dos produtos para as filiais da empresa é feita com base nas demandas de cada filial. Cada filial é identificada por um código único e possui atributos como nome, endereço, e capacidade de armazenamento. O sistema deve ser capaz de registrar as transferências de produtos entre o armazém central e as filiais, bem como monitorar o inventário de cada filial.
+
+Com esses detalhes, vocês devem identificar todas as entidades envolvidas, mapear seus atributos, definir os relacionamentos e suas cardinalidades, e estabelecer as chaves primárias e estrangeiras. O objetivo é criar um modelo entidade relacionamento (MER) e um diagrama de entidade-relacionamento (ER) que capture todas as complexidades e interações da cadeia de suprimentos da empresa.
