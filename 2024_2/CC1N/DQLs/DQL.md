@@ -55,7 +55,27 @@ Essa consulta mostra a quantidade de clientes por cidade, agrupando e contando t
 
 ---
 
-## 3. Funções Lógicas
+## 3. Filtrando Resultados com `WHERE`
+
+**Descrição**:  
+A cláusula `WHERE` é essencial para filtrar dados com base em uma condição específica. Sem o `WHERE`, o SQL retornará todos os registros da tabela indicada no `FROM`. Com ele, os resultados são refinados, exibindo apenas aqueles que atendem à condição estipulada.
+
+**Sintaxe**:
+```sql
+SELECT coluna1, coluna2 FROM tabela WHERE condição;
+```
+
+**Exemplo**:
+```sql
+SELECT nome, idade FROM clientes WHERE idade > 30;
+```
+
+**Aprendendo na Prática**:  
+Essa consulta retorna somente os clientes com idade acima de 30 anos, filtrando aqueles que atendem a essa condição e facilitando análises segmentadas dos dados.
+
+---
+
+## 4. Funções Lógicas
 
 Com funções lógicas como `AND`, `OR` e `NOT`, é possível criar condições compostas em `WHERE`, flexibilizando os filtros.
 
@@ -79,25 +99,6 @@ Com funções lógicas como `AND`, `OR` e `NOT`, é possível criar condições 
 SELECT nome, idade FROM clientes WHERE cidade = 'São Paulo' AND idade > 30;
 ```
 Filtra os clientes de São Paulo que têm mais de 30 anos, ideal para combinações de condições.
-
----
-## 4. Filtrando Resultados com `WHERE`
-
-**Descrição**:  
-A cláusula `WHERE` é essencial para filtrar dados com base em uma condição específica. Sem o `WHERE`, o SQL retornará todos os registros da tabela indicada no `FROM`. Com ele, os resultados são refinados, exibindo apenas aqueles que atendem à condição estipulada.
-
-**Sintaxe**:
-```sql
-SELECT coluna1, coluna2 FROM tabela WHERE condição;
-```
-
-**Exemplo**:
-```sql
-SELECT nome, idade FROM clientes WHERE idade > 30;
-```
-
-**Aprendendo na Prática**:  
-Essa consulta retorna somente os clientes com idade acima de 30 anos, filtrando aqueles que atendem a essa condição e facilitando análises segmentadas dos dados.
 
 ---
 
