@@ -1,9 +1,13 @@
-#Comando DQL - MYSQL - Resumão
+Aqui está o texto revisado, com mais informações para aprofundar o entendimento de cada tópico e facilitar o aprendizado de jovens estudantes de banco de dados:
 
-### 1. Introdução ao `SELECT` e `FROM`
+---
+
+# Comando DQL - MySQL - Resumão
+
+## 1. Introdução ao `SELECT` e `FROM`
 
 **Descrição**:  
-O `SELECT` define as colunas a serem exibidas, e o `FROM` indica a tabela de onde esses dados serão extraídos.
+A consulta básica no SQL começa com o comando `SELECT`, que indica quais colunas queremos visualizar no resultado, e `FROM`, que especifica a tabela de onde esses dados serão extraídos.
 
 **Sintaxe**:
 ```sql
@@ -16,14 +20,75 @@ SELECT nome, idade FROM clientes;
 ```
 
 **Aprendendo na Prática**:  
-Esta consulta retorna os nomes e idades de todos os registros na tabela `clientes`.
+Esta consulta retorna os nomes e idades de todos os registros na tabela `clientes`, permitindo visualizar as informações sem filtros adicionais.
 
 ---
 
-### 2. Filtrando Resultados com `WHERE`
+## 2. Funções de Agregação
+
+As funções de agregação permitem calcular valores combinados a partir de múltiplas linhas, como somar valores ou contar registros. São úteis para entender a totalidade dos dados em uma tabela ou grupo.
+
+### Principais Funções de Agregação
+
+1. **COUNT**: Conta o número total de registros, útil para saber quantos itens correspondem a um filtro.
+   ```sql
+   SELECT COUNT(*) FROM clientes;
+   ```
+
+2. **SUM**: Realiza a soma dos valores de uma coluna específica.
+   ```sql
+   SELECT SUM(salario) FROM funcionarios;
+   ```
+
+3. **AVG**: Calcula a média de valores, bom para descobrir o valor médio em uma coluna numérica.
+   ```sql
+   SELECT AVG(idade) FROM clientes;
+   ```
+
+4. **MAX** e **MIN**: Retornam o maior e o menor valor, respectivamente.
+   ```sql
+   SELECT MAX(salario) FROM funcionarios;
+   SELECT MIN(salario) FROM funcionarios;
+   ```
+
+**Aprendendo na Prática com `COUNT`**:
+```sql
+SELECT cidade, COUNT(*) FROM clientes GROUP BY cidade;
+```
+Essa consulta mostra a quantidade de clientes por cidade, agrupando e contando todos que compartilham a mesma cidade.
+
+---
+
+## 3. Funções Lógicas
+
+Com funções lógicas como `AND`, `OR` e `NOT`, é possível criar condições compostas em `WHERE`, flexibilizando os filtros.
+
+1. **AND**: Todas as condições devem ser verdadeiras.
+   ```sql
+   SELECT * FROM clientes WHERE cidade = 'São Paulo' AND idade > 30;
+   ```
+
+2. **OR**: Ao menos uma das condições deve ser verdadeira.
+   ```sql
+   SELECT * FROM clientes WHERE cidade = 'São Paulo' OR cidade = 'Rio de Janeiro';
+   ```
+
+3. **NOT**: Inverte a condição, exibindo registros que não atendem ao critério.
+   ```sql
+   SELECT * FROM clientes WHERE NOT cidade = 'São Paulo';
+   ```
+
+**Aprendendo na Prática com `AND`**:
+```sql
+SELECT nome, idade FROM clientes WHERE cidade = 'São Paulo' AND idade > 30;
+```
+Filtra os clientes de São Paulo que têm mais de 30 anos, ideal para combinações de condições.
+
+---
+## 4. Filtrando Resultados com `WHERE`
 
 **Descrição**:  
-A cláusula `WHERE` filtra registros com base em condições específicas.
+A cláusula `WHERE` é essencial para filtrar dados com base em uma condição específica. Sem o `WHERE`, o SQL retornará todos os registros da tabela indicada no `FROM`. Com ele, os resultados são refinados, exibindo apenas aqueles que atendem à condição estipulada.
 
 **Sintaxe**:
 ```sql
@@ -36,64 +101,25 @@ SELECT nome, idade FROM clientes WHERE idade > 30;
 ```
 
 **Aprendendo na Prática**:  
-Essa consulta exibe apenas os nomes e idades dos clientes que têm mais de 30 anos.
+Essa consulta retorna somente os clientes com idade acima de 30 anos, filtrando aqueles que atendem a essa condição e facilitando análises segmentadas dos dados.
 
 ---
 
-### 3. Funções de Agregação
+## 5. Funções para Uso com `WHERE`
 
-As funções de agregação são usadas para realizar cálculos em grupos de valores e retornam um único valor. Elas são especialmente úteis quando combinadas com `GROUP BY`.
+As funções aplicáveis em `WHERE` possibilitam filtros mais complexos, como buscas por padrões de texto e intervalos numéricos.
 
-#### Principais Funções de Agregação:
-
-1. **COUNT**: Conta o número de registros.
-   ```sql
-   SELECT COUNT(*) FROM clientes;
-   ```
-
-2. **SUM**: Soma os valores de uma coluna.
-   ```sql
-   SELECT SUM(salario) FROM funcionarios;
-   ```
-
-3. **AVG**: Calcula a média dos valores de uma coluna.
-   ```sql
-   SELECT AVG(idade) FROM clientes;
-   ```
-
-4. **MAX**: Retorna o maior valor de uma coluna.
-   ```sql
-   SELECT MAX(salario) FROM funcionarios;
-   ```
-
-5. **MIN**: Retorna o menor valor de uma coluna.
-   ```sql
-   SELECT MIN(salario) FROM funcionarios;
-   ```
-
-**Aprendendo na Prática com `COUNT`**:
-```sql
-SELECT cidade, COUNT(*) FROM clientes GROUP BY cidade;
-```
-Essa consulta mostra a quantidade de clientes em cada cidade.
-
----
-
-### 4. Funções para Uso com `WHERE`
-
-Funções que podem ser usadas na cláusula `WHERE` ajudam a criar filtros mais complexos.
-
-1. **LIKE**: Para padrões em textos.
+1. **LIKE**: Usa padrões para comparar strings. `%` representa qualquer sequência de caracteres, `LIKE 'J%'` encontra palavras que começam com "J".
    ```sql
    SELECT nome FROM clientes WHERE nome LIKE 'J%';
    ```
 
-2. **BETWEEN**: Para valores entre um intervalo.
+2. **BETWEEN**: Define um intervalo, muito útil em buscas numéricas ou de data.
    ```sql
    SELECT nome FROM clientes WHERE idade BETWEEN 20 AND 30;
    ```
 
-3. **IN**: Verifica se um valor está em uma lista.
+3. **IN**: Verifica se o valor está em uma lista específica, evitando a repetição de condições com `OR`.
    ```sql
    SELECT nome FROM clientes WHERE cidade IN ('São Paulo', 'Rio de Janeiro');
    ```
@@ -102,47 +128,18 @@ Funções que podem ser usadas na cláusula `WHERE` ajudam a criar filtros mais 
 ```sql
 SELECT nome FROM clientes WHERE nome LIKE 'A%';
 ```
-Retorna todos os clientes cujo nome começa com a letra "A".
+Retorna todos os clientes cujo nome começa com "A", permitindo buscas por grupos de clientes com base nas primeiras letras do nome.
 
 ---
 
-### 5. Funções Lógicas
-
-Funções lógicas são usadas para construir condições complexas em `WHERE`.
-
-1. **AND**: Todas as condições devem ser verdadeiras.
-   ```sql
-   SELECT * FROM clientes WHERE cidade = 'São Paulo' AND idade > 30;
-   ```
-
-2. **OR**: Ao menos uma das condições deve ser verdadeira.
-   ```sql
-   SELECT * FROM clientes WHERE cidade = 'São Paulo' OR cidade = 'Rio de Janeiro';
-   ```
-
-3. **NOT**: Inverte o resultado de uma condição.
-   ```sql
-   SELECT * FROM clientes WHERE NOT cidade = 'São Paulo';
-   ```
-
-**Aprendendo na Prática com `AND`**:
-```sql
-SELECT nome, idade FROM clientes WHERE cidade = 'São Paulo' AND idade > 30;
-```
-Lista os clientes de São Paulo com idade acima de 30.
-
----
-
-### 6. Agrupando com `GROUP BY`
+## 6. Agrupando com `GROUP BY`
 
 **Descrição**:  
-Agrupa registros para realizar operações de agregação em grupos.
+`GROUP BY` é usado junto com funções de agregação para dividir os dados em grupos, como clientes por cidade ou total de vendas por mês.
 
 **Sintaxe**:
 ```sql
-SELECT coluna1, função_agregação(coluna2)
-FROM tabela
-GROUP BY coluna1;
+SELECT coluna1, função_agregação(coluna2) FROM tabela GROUP BY coluna1;
 ```
 
 **Exemplo**:
@@ -151,14 +148,14 @@ SELECT cidade, COUNT(*) FROM clientes GROUP BY cidade;
 ```
 
 **Aprendendo na Prática**:  
-Conta quantos clientes existem em cada cidade.
+Conta o número de clientes em cada cidade, ajudando a identificar concentrações geográficas dos clientes.
 
 ---
 
-### 7. Ordenando com `ORDER BY`
+## 7. Ordenando com `ORDER BY`
 
 **Descrição**:  
-Ordena os resultados em ordem crescente (`ASC`) ou decrescente (`DESC`).
+Ordena o resultado da consulta em ordem ascendente (`ASC`, padrão) ou descendente (`DESC`), útil para ordenar dados por relevância, data, ou valor.
 
 **Sintaxe**:
 ```sql
@@ -171,21 +168,18 @@ SELECT nome, idade FROM clientes ORDER BY idade DESC;
 ```
 
 **Aprendendo na Prática**:  
-Lista os clientes em ordem decrescente de idade.
+Lista clientes em ordem decrescente de idade, ajudando a identificar o cliente mais velho e o mais novo.
 
 ---
 
-### 8. Filtrando Grupos com `HAVING`
+## 8. Filtrando Grupos com `HAVING`
 
 **Descrição**:  
-Usado junto com `GROUP BY` para aplicar condições nos grupos formados.
+Filtra grupos formados por `GROUP BY` após a agregação, essencial para aplicar condições em conjuntos agregados.
 
 **Sintaxe**:
 ```sql
-SELECT coluna1, função_agregação(coluna2)
-FROM tabela
-GROUP BY coluna1
-HAVING condição;
+SELECT coluna1, função_agregação(coluna2) FROM tabela GROUP BY coluna1 HAVING condição;
 ```
 
 **Exemplo**:
@@ -194,14 +188,14 @@ SELECT cidade, COUNT(*) FROM clientes GROUP BY cidade HAVING COUNT(*) > 5;
 ```
 
 **Aprendendo na Prática**:  
-Exibe apenas cidades com mais de cinco clientes.
+Exibe apenas cidades com mais de cinco clientes, ideal para análises por volume.
 
 ---
 
-### 9. Limitando os Resultados com `LIMIT`
+## 9. Limitando Resultados com `LIMIT`
 
 **Descrição**:  
-Restringe o número de registros retornados.
+Define quantas linhas serão exibidas, geralmente usado para paginar resultados ou limitar visualizações iniciais.
 
 **Sintaxe**:
 ```sql
@@ -214,7 +208,7 @@ SELECT nome FROM clientes LIMIT 10;
 ```
 
 **Aprendendo na Prática**:  
-Retorna os 10 primeiros clientes da tabela.
+Retorna apenas os 10 primeiros clientes, útil para visualizar uma amostra de dados.
 
 ---
 
