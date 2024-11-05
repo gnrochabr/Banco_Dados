@@ -1,7 +1,3 @@
-Aqui está o texto revisado, com mais informações para aprofundar o entendimento de cada tópico e facilitar o aprendizado de jovens estudantes de banco de dados:
-
----
-
 # Comando DQL - MySQL - Resumão
 
 ## 1. Introdução ao `SELECT` e `FROM`
