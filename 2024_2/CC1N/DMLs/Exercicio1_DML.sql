@@ -1,3 +1,10 @@
+INSERT INTO PARTICIPANTES (NUM_INSCRICAO, CPF, NOME, DATA_NASC, EMPRESA) VALUES 
+(1, '123.456.789-00', 'Alice Silva', '1985-06-15', 'Empresa A'),
+(2, '987.654.321-00', 'Carlos Souza', '1990-08-22', 'Empresa B'),
+(3, '456.123.789-00', 'Maria Oliveira', '1978-03-05', 'Empresa C'),
+(4, '321.654.987-00', 'João Pereira', '1995-12-30', 'Empresa D'),
+(5, '789.456.123-00', 'Ana Lima', '1982-10-10', 'Empresa E');
+
 INSERT INTO LOCAIS (ID_LOCAL, NOME, LOG_LOCAL, NUMLOG_LOCAL, BAIRRO_LOCAL, CIDADE, CEP, CAPACIDADE) VALUES 
 (1, 'Centro de Convenções', 'Av. Central', 100, 'Centro', 'Cidade A', '11111-000', 200),
 (2, 'Auditório Principal', 'Rua 1', 50, 'Centro', 'Cidade B', '22222-000', 150),
