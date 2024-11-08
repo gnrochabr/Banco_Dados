@@ -1,5 +1,3 @@
-Aqui estão os inserts para cada tabela, respeitando as chaves estrangeiras e a estrutura fornecida:
-
 ```sql
 -- Inserindo usuários
 INSERT INTO USUARIOS (ID_USUARIO, NOME_USUARIO, SOBRENOME, EMAIL) VALUES
@@ -12,7 +10,7 @@ INSERT INTO USUARIOS (ID_USUARIO, NOME_USUARIO, SOBRENOME, EMAIL) VALUES
 (7, 'Grace', 'Almeida', 'grace@mail.com');
 
 -- Inserindo grupos
-INSERT INTO GRUPOS (ID_GRUPO, NOME_GRUPO, DESCRICAO) VALUES
+INSERT INTO GRUPOS (ID_GRUPO, NOME_GRUPO, DESCRICAO_GRUPO) VALUES
 (1, 'Tech Enthusiasts', 'Grupo para amantes de tecnologia'),
 (2, 'Music Lovers', 'Grupo para fãs de música'),
 (3, 'Nature Explorers', 'Grupo para exploradores da natureza'),
@@ -22,14 +20,14 @@ INSERT INTO GRUPOS (ID_GRUPO, NOME_GRUPO, DESCRICAO) VALUES
 (7, 'Art Aficionados', 'Grupo para apreciadores de arte');
 
 -- Inserindo postagens
-INSERT INTO POSTAGENS (ID_POST, TEXTO, IMAGEM, DATA_HORA, USUARIO, POST) VALUES
-(1, 'Explorando novas tecnologias!', NULL, '2024-10-01 10:00:00', 1, 1),
-(2, 'Meu livro favorito do mês.', NULL, '2024-10-02 12:15:00', 2, 2),
-(3, 'A música é a linguagem da alma.', NULL, '2024-10-03 15:30:00', 3, 3),
-(4, 'Saúde é riqueza!', NULL, '2024-10-04 09:00:00', 4, 4),
-(5, 'Preparando um prato delicioso.', NULL, '2024-10-05 18:20:00', 5, 5),
-(6, 'Arte abstrata é fascinante.', NULL, '2024-10-06 13:45:00', 6, 6),
-(7, 'Aventuras na natureza.', NULL, '2024-10-07 11:30:00', 7, 7);
+INSERT INTO POSTAGENS (ID_POST, TEXTO, IMAGEM, DATA_HORA, USUARIO) VALUES
+(1, 'Explorando novas tecnologias!', NULL, '2024-10-01 10:00:00', 1),
+(2, 'Meu livro favorito do mês.', NULL, '2024-10-02 12:15:00', 2),
+(3, 'A música é a linguagem da alma.', NULL, '2024-10-03 15:30:00', 3),
+(4, 'Saúde é riqueza!', NULL, '2024-10-04 09:00:00', 4),
+(5, 'Preparando um prato delicioso.', NULL, '2024-10-05 18:20:00', 5),
+(6, 'Arte abstrata é fascinante.', NULL, '2024-10-06 13:45:00', 6),
+(7, 'Aventuras na natureza.', NULL, '2024-10-07 11:30:00', 7);
 
 -- Inserindo comentários
 INSERT INTO COMENTARIOS (ID_COMENTARIO, TEXTO, DATAHORA, USUARIO, POST) VALUES
@@ -61,5 +59,3 @@ INSERT INTO SEGUIDORES (USUARIO, SEGUIDOR) VALUES
 (6, 7),
 (7, 1);
 ```
-
-Esses inserts atendem às restrições de integridade referencial e preenchem cada tabela com 7 entradas, assegurando que todas as chaves estrangeiras estão sendo corretamente referenciadas.
