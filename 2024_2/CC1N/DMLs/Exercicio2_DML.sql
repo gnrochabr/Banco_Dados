@@ -1,6 +1,4 @@
---
-```sql
--- Inserindo usuários
+
 INSERT INTO USUARIOS (ID_USUARIO, NOME_USUARIO, SOBRENOME, EMAIL) VALUES
 (1, 'Alice', 'Silva', 'alice@mail.com'),
 (2, 'Bob', 'Oliveira', 'bob@mail.com'),
@@ -59,4 +57,4 @@ INSERT INTO SEGUIDORES (USUARIO, SEGUIDOR) VALUES
 (5, 6),
 (6, 7),
 (7, 1);
-```
+
