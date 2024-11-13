@@ -41,9 +41,9 @@ FROM USUARIOS
 WHERE EMAIL LIKE '%MAIL.COM';
 
 # 9. Exiba a data e a quantidade de postagens realizadas em cada data na tabela POSTAGENS.
-SELECT DATA_HORA, COUNT(*)
+SELECT DATE(DATA_HORA), COUNT(*)
 FROM POSTAGENS
-GROUP BY DATA_HORA;
+GROUP BY DATE(DATA_HORA);
 
 # 10. Encontre o total de seguidores que cada usuário possui na tabela USUARIOS, exibindo o ID do usuário e a contagem de seguidores.
 SHOW COLUMNS FROM USUARIOS_SEGUIDORES;
