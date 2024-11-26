@@ -83,7 +83,7 @@ Essa consulta mostra a quantidade de clientes por cidade, agrupando e contando t
 **Manipulação de Strings com Funções SQL**:
 Funções de manipulação de strings permitem ajustar, formatar e consultar dados textuais.
 
-Principais Funções
+### Principais Funções
 UPPER e LOWER: Transformam o texto para maiúsculas ou minúsculas.
 ```sql
 SELECT UPPER(nome) FROM clientes;
@@ -119,10 +119,9 @@ Cria uma mensagem personalizada para cada cliente, unindo texto fixo e valores d
   
 ---
 **Funções de Data e Hora**:
-Descrição:
 Permitem realizar operações com valores de data e hora, essenciais para registros temporais e relatórios.
 
-Principais Funções
+### Principais Funções
 NOW: Retorna a data e hora atuais.
 ```sql
 SELECT NOW();
