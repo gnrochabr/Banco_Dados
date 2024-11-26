@@ -18,6 +18,7 @@ SELECT nome, idade FROM clientes;
 **Aprendendo na Prática**:  
 Esta consulta retorna os nomes e idades de todos os registros na tabela `clientes`, permitindo visualizar as informações sem filtros adicionais.
 
+---
 **DISTINCT**:  
 O modificador DISTINCT remove valores duplicados de uma coluna ou conjunto de colunas na saída da consulta, garantindo que os resultados sejam únicos.
 
@@ -77,7 +78,8 @@ As funções de agregação permitem calcular valores combinados a partir de mú
 SELECT cidade, COUNT(*) FROM clientes GROUP BY cidade;
 ```
 Essa consulta mostra a quantidade de clientes por cidade, agrupando e contando todos que compartilham a mesma cidade.
-  
+    
+---
 **Manipulação de Strings com Funções SQL**:
 Descrição:
 Funções de manipulação de strings permitem ajustar, formatar e consultar dados textuais.
@@ -115,7 +117,8 @@ SELECT CONCAT(nome, ' mora em ', cidade) AS mensagem FROM clientes;
 ```
 Cria uma mensagem personalizada para cada cliente, unindo texto fixo e valores da tabela.
 
-
+  
+---
 **Funções de Data e Hora**:
 Descrição:
 Permitem realizar operações com valores de data e hora, essenciais para registros temporais e relatórios.
