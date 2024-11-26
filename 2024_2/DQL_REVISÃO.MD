@@ -321,7 +321,7 @@ Retorna apenas os 10 primeiros clientes, útil para visualizar uma amostra de da
 
 O `JOIN` combina registros de tabelas distintas com base em uma coluna em comum.
 
-#### a. `INNER JOIN`
+#### a. `INNER JOIN` ou apenas `JOIN`
 
 **Descrição**:  
 Retorna registros que têm correspondência em ambas as tabelas.
@@ -331,6 +331,13 @@ Retorna registros que têm correspondência em ambas as tabelas.
 SELECT clientes.nome, pedidos.data
 FROM clientes
 INNER JOIN pedidos ON clientes.cliente_id = pedidos.cliente_id;
+```
+OU
+
+```sql
+SELECT clientes.nome, pedidos.data
+FROM clientes
+JOIN pedidos ON clientes.cliente_id = pedidos.cliente_id;
 ```
 
 **Aprendendo na Prática**:  
