@@ -190,26 +190,6 @@ VALUES (1, 'Ana Lima', 30, 'ana.lima@email.com');
 
 ---
 
-## Guia para Iniciantes e Intermediários
-
-### Para Iniciantes:
-1. **Compreenda a Estrutura das Tabelas:** Use o comando `DESCRIBE tabela;` para visualizar as colunas e tipos de dados.
-2. **Testes em Ambiente Seguro:** Experimente comandos DML em tabelas de teste antes de aplicá-los em produção.
-3. **Erros Comuns:** Evite esquecer a cláusula `WHERE` nos comandos `UPDATE` e `DELETE`.
-
-### Para Usuários Intermediários:
-1. **Transações:** Para comandos que afetam múltiplos registros, use:
-   ```sql
-   START TRANSACTION;
-   -- Comandos DML
-   COMMIT;
-   ```
-   Use `ROLLBACK` para desfazer alterações.
-2. **Otimização com Índices:** Certifique-se de que as colunas usadas em condições (`WHERE`) têm índices para melhorar o desempenho.
-3. **Funções Avançadas:** Combine comandos DML com funções do MySQL, como `NOW()` para inserir timestamps ou subconsultas para valores dinâmicos.
-
----
-
 ## Considerações Finais
 - **Integridade dos Dados:** Sempre valide os dados antes de inseri-los.
 - **Backups:** Mantenha backups frequentes para evitar perda de dados em caso de erro.
