@@ -257,27 +257,7 @@ Conta o número de clientes em cada cidade, ajudando a identificar concentraçõ
 
 ---
 
-## 7. Ordenando com `ORDER BY`
-
-**Descrição**:  
-Ordena o resultado da consulta em ordem ascendente (`ASC`, padrão) ou descendente (`DESC`), útil para ordenar dados por relevância, data, ou valor.
-
-**Sintaxe**:
-```sql
-SELECT coluna1, coluna2 FROM tabela ORDER BY coluna1 [ASC|DESC];
-```
-
-**Exemplo**:
-```sql
-SELECT nome, idade FROM clientes ORDER BY idade DESC;
-```
-
-**Aprendendo na Prática**:  
-Lista clientes em ordem decrescente de idade, ajudando a identificar o cliente mais velho e o mais novo.
-
----
-
-## 8. Filtrando Grupos com `HAVING`
+## 7. Filtrando Grupos com `HAVING`
 
 **Descrição**:  
 Filtra grupos formados por `GROUP BY` após a agregação, essencial para aplicar condições em conjuntos agregados.
@@ -294,6 +274,26 @@ SELECT cidade, COUNT(*) FROM clientes GROUP BY cidade HAVING COUNT(*) > 5;
 
 **Aprendendo na Prática**:  
 Exibe apenas cidades com mais de cinco clientes, ideal para análises por volume.
+
+---
+
+## 8. Ordenando com `ORDER BY`
+
+**Descrição**:  
+Ordena o resultado da consulta em ordem ascendente (`ASC`, padrão) ou descendente (`DESC`), útil para ordenar dados por relevância, data, ou valor.
+
+**Sintaxe**:
+```sql
+SELECT coluna1, coluna2 FROM tabela ORDER BY coluna1 [ASC|DESC];
+```
+
+**Exemplo**:
+```sql
+SELECT nome, idade FROM clientes ORDER BY idade DESC;
+```
+
+**Aprendendo na Prática**:  
+Lista clientes em ordem decrescente de idade, ajudando a identificar o cliente mais velho e o mais novo.
 
 ---
 
