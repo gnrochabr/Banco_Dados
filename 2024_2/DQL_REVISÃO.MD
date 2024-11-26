@@ -23,22 +23,23 @@ O modificador DISTINCT remove valores duplicados de uma coluna ou conjunto de co
 
 Sintaxe:
 
-sql
-Copiar código
+```sql
 SELECT DISTINCT coluna1 FROM tabela;
+```
 Exemplo:
 
-sql
-Copiar código
+```sql
 SELECT DISTINCT cidade FROM clientes;
+```
+
 Aprendendo na Prática:
 Essa consulta retorna todas as cidades onde existem clientes registrados, mas sem repetições.
 
 Exemplo Avançado:
 
-sql
-Copiar código
+sql ```
 SELECT DISTINCT cidade, estado FROM clientes;
+```
 Retorna combinações únicas de cidades e estados na tabela clientes.
   
 ---
@@ -83,36 +84,35 @@ Funções de manipulação de strings permitem ajustar, formatar e consultar dad
 
 Principais Funções
 UPPER e LOWER: Transformam o texto para maiúsculas ou minúsculas.
-
-sql
-Copiar código
+```sql
 SELECT UPPER(nome) FROM clientes;
 SELECT LOWER(nome) FROM clientes;
+```
+
 CONCAT: Junta duas ou mais strings em uma única.
-
-sql
-Copiar código
+```sql
 SELECT CONCAT(nome, ' ', sobrenome) AS nome_completo FROM clientes;
+```
+
 SUBSTRING: Extrai parte de uma string.
-
-sql
-Copiar código
+```sql
 SELECT SUBSTRING(nome, 1, 3) AS iniciais FROM clientes;
+```
+
 LENGTH: Retorna o tamanho de uma string.
-
-sql
-Copiar código
+```sql
 SELECT LENGTH(nome) FROM clientes;
+```
+
 TRIM: Remove espaços em branco no início e no fim de uma string.
-
-sql
-Copiar código
+```sql
 SELECT TRIM(nome) FROM clientes;
-Aprendendo na Prática com CONCAT:
+```
 
-sql
-Copiar código
+Aprendendo na Prática com CONCAT:
+```sql
 SELECT CONCAT(nome, ' mora em ', cidade) AS mensagem FROM clientes;
+```
 Cria uma mensagem personalizada para cada cliente, unindo texto fixo e valores da tabela.
 
 
@@ -122,36 +122,33 @@ Permitem realizar operações com valores de data e hora, essenciais para regist
 
 Principais Funções
 NOW: Retorna a data e hora atuais.
-
-sql
-Copiar código
+```sql
 SELECT NOW();
+```
+
 CURDATE e CURTIME: Retornam a data e hora atuais separadamente.
-
-sql
-Copiar código
+```sql
 SELECT CURDATE(), CURTIME();
-DATE_ADD e DATE_SUB: Adicionam ou subtraem intervalos de tempo.
+```
 
-sql
-Copiar código
+DATE_ADD e DATE_SUB: Adicionam ou subtraem intervalos de tempo.
+```sql
 SELECT DATE_ADD(NOW(), INTERVAL 7 DAY);
 SELECT DATE_SUB(NOW(), INTERVAL 1 MONTH);
+```
+
 DATEDIFF: Calcula a diferença entre duas datas.
-
-sql
-Copiar código
+```sql
 SELECT DATEDIFF('2024-12-31', '2024-01-01');
+```
 YEAR, MONTH, DAY: Extraem partes de uma data.
-
-sql
-Copiar código
+```sql
 SELECT YEAR(data_nascimento), MONTH(data_nascimento) FROM clientes;
+```
 Aprendendo na Prática com DATEDIFF:
-
-sql
-Copiar código
+```sql
 SELECT nome, DATEDIFF(CURDATE(), data_nascimento) AS dias_de_vida FROM clientes;
+```
 Calcula a idade de cada cliente em dias.
   
 ---
@@ -380,68 +377,66 @@ Exibe todos os clientes e pedidos, incluindo aqueles sem correspondência em uma
 
 ---
 
-### 11. Subconsultas (Subqueries)
+## 11. Subconsultas (Subqueries)
 
-  Descrição:
+**Descrição**:  
 Subconsultas, ou consultas aninhadas, são usadas para resolver problemas complexos em partes. Elas permitem usar os resultados de uma consulta como entrada para outra.
 
-Tipos de Subconsultas
-Subconsulta Simples:
-Retorna um único valor que pode ser usado como uma constante em outra consulta.
+### Tipos de Subconsultas
 
-sql
-Copiar código
-SELECT nome FROM clientes WHERE idade = (SELECT MAX(idade) FROM clientes);
-Aprendendo na Prática:
-Essa consulta retorna o nome do cliente mais velho.
+1. **Subconsulta Simples**:  
+   Retorna um único valor que pode ser usado como uma constante em outra consulta.
+   ```sql
+   SELECT nome FROM clientes WHERE idade = (SELECT MAX(idade) FROM clientes);
+   ```
+   **Aprendendo na Prática**:  
+   Essa consulta retorna o nome do cliente mais velho.
 
-Subconsulta com Múltiplos Valores:
-Retorna vários valores que podem ser usados com operadores como IN.
+2. **Subconsulta com Múltiplos Valores**:  
+   Retorna vários valores que podem ser usados com operadores como `IN`.
+   ```sql
+   SELECT nome FROM clientes WHERE cidade IN (SELECT cidade FROM fornecedores);
+   ```
+   **Aprendendo na Prática**:  
+   Retorna os nomes de clientes que estão nas mesmas cidades dos fornecedores.
 
-sql
-Copiar código
-SELECT nome FROM clientes WHERE cidade IN (SELECT cidade FROM fornecedores);
-Aprendendo na Prática:
-Retorna os nomes de clientes que estão nas mesmas cidades dos fornecedores.
+3. **Subconsulta Correlacionada**:  
+   Refere-se a colunas da consulta externa e é avaliada para cada linha processada.
+   ```sql
+   SELECT nome FROM clientes WHERE idade > (SELECT AVG(idade) FROM clientes);
+   ```
+   **Aprendendo na Prática**:  
+   Retorna o nome de clientes cuja idade é maior que a idade média de todos os clientes.
 
-Subconsulta Correlacionada:
-Refere-se a colunas da consulta externa e é avaliada para cada linha processada.
+## 12. Operações de União com `UNION` e `UNION ALL`
 
-sql
-Copiar código
-SELECT nome FROM clientes WHERE idade > (SELECT AVG(idade) FROM clientes);
-Aprendendo na Prática:
-Retorna o nome de clientes cuja idade é maior que a idade média de todos os clientes.
-
-
-12. Operações de União com UNION e UNION ALL
-Descrição:
+**Descrição**:  
 Combina os resultados de duas ou mais consultas em uma única saída.
 
-UNION: Remove duplicatas nos resultados combinados.
-UNION ALL: Mantém duplicatas.
-Sintaxe:
+- **`UNION`**: Remove duplicatas nos resultados combinados.
+- **`UNION ALL`**: Mantém duplicatas.
 
-sql
-Copiar código
+**Sintaxe**:
+```sql
 SELECT coluna1 FROM tabela1
 UNION
 SELECT coluna1 FROM tabela2;
-Exemplo:
+```
 
-sql
-Copiar código
+**Exemplo**:
+```sql
 SELECT nome FROM clientes
 UNION
 SELECT nome FROM fornecedores;
-Aprendendo na Prática:
+```
+
+**Aprendendo na Prática**:  
 Retorna uma lista de nomes únicos combinando clientes e fornecedores.
 
-Com UNION ALL:
-
-sql
-Copiar código
+**Com `UNION ALL`**:
+```sql
 SELECT nome FROM clientes
 UNION ALL
 SELECT nome FROM fornecedores;
+```
 Inclui duplicatas, caso existam nomes iguais em ambas as tabelas.
