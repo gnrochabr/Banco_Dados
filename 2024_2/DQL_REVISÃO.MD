@@ -37,7 +37,7 @@ Essa consulta retorna todas as cidades onde existem clientes registrados, mas se
 
 Exemplo Avançado:
 
-sql ```
+```sql
 SELECT DISTINCT cidade, estado FROM clientes;
 ```
 Retorna combinações únicas de cidades e estados na tabela clientes.
