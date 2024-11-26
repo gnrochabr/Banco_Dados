@@ -47,7 +47,7 @@ Retorna combinações únicas de cidades e estados na tabela clientes.
 
 ## 2. Funções
 
-**Funções de Agregação**:  
+## **Funções de Agregação**:  
 As funções de agregação permitem calcular valores combinados a partir de múltiplas linhas, como somar valores ou contar registros. São úteis para entender a totalidade dos dados em uma tabela ou grupo.
 
 ### Principais Funções de Agregação
@@ -80,7 +80,7 @@ SELECT cidade, COUNT(*) FROM clientes GROUP BY cidade;
 Essa consulta mostra a quantidade de clientes por cidade, agrupando e contando todos que compartilham a mesma cidade.
     
 ---
-**Manipulação de Strings com Funções SQL**:
+## **Manipulação de Strings com Funções SQL**:
 Funções de manipulação de strings permitem ajustar, formatar e consultar dados textuais.
 
 ### Principais Funções
