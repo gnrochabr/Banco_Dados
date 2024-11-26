@@ -84,6 +84,11 @@ Essa consulta mostra a quantidade de clientes por cidade, agrupando e contando t
 Funções de manipulação de strings permitem ajustar, formatar e consultar dados textuais.
 
 ### Principais Funções
+ALIAS: Cria um apelido para uma função ou coluna, usando o prefixo AS.
+```sql
+SELECT sum(salario) AS Salario FROM funcionários;
+```
+
 UPPER e LOWER: Transformam o texto para maiúsculas ou minúsculas.
 ```sql
 SELECT UPPER(nome) FROM clientes;
