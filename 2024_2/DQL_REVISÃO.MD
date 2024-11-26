@@ -81,7 +81,6 @@ Essa consulta mostra a quantidade de clientes por cidade, agrupando e contando t
     
 ---
 **Manipulação de Strings com Funções SQL**:
-Descrição:
 Funções de manipulação de strings permitem ajustar, formatar e consultar dados textuais.
 
 Principais Funções
