@@ -118,7 +118,7 @@ Cria uma mensagem personalizada para cada cliente, unindo texto fixo e valores d
 
   
 ---
-**Funções de Data e Hora**:
+## **Funções de Data e Hora**:
 Permitem realizar operações com valores de data e hora, essenciais para registros temporais e relatórios.
 
 ### Principais Funções
