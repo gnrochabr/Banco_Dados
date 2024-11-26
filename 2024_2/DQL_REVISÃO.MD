@@ -88,7 +88,7 @@ ALIAS: Cria um apelido para uma função ou coluna, usando o prefixo AS.
 ```sql
 SELECT sum(salario) AS Salario FROM funcionários;
 ```
-Também pode ser usado sem o prefixo AS e usar texto como apelido, usando aspas.
+Também pode ser usado sem o prefixo AS e/ou usar texto como apelido, usando aspas.
 ```sql
 SELECT sum(salario) 'Soma dos salários' FROM funcionários;
 ```
