@@ -1,4 +1,4 @@
-# Manual Completo de DDL para MySQL  
+# Revisão Completa de DDL para MySQL  
 
 ## Introdução  
 
