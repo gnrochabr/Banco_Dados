@@ -112,7 +112,7 @@ ALTER TABLE livros MODIFY titulo TEXT;
 ```  
 OU
 ```sql
-ALTER TABLE livros MODIFY titulo TEXT;
+ALTER TABLE livros MODIFY COLUMN titulo TEXT;
 ```  
 ---
 **Renomear e mudar o tipo de uma Coluna:**  
