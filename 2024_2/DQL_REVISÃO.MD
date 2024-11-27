@@ -155,7 +155,7 @@ YEAR, MONTH, DAY: Extraem partes de uma data.
 ```sql
 SELECT YEAR(data_nascimento), MONTH(data_nascimento) FROM clientes;
 ```
-TIMESTAMPDIFF: Calcula a diferença entre duas datas com retorno em horas (hour), minutos (minute), segundos(second), dias(day), semanas(week), meses(month) ou anos(year).
+TIMESTAMPDIFF: Calcula a diferença entre duas datas com retorno em horas (hour), minutos (minute), segundos (second), dias (day), semanas (week), meses (month) ou anos (year).
 ```sql
 SELECT TIMESTAMPDIFF(YEAR,NOW(), data_nascimento);
 ```
