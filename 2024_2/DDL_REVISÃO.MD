@@ -115,7 +115,7 @@ OU
 ALTER TABLE livros MODIFY COLUMN titulo TEXT;
 ```  
 ---
-**Renomear e mudar o tipo de uma Coluna:**  
+**Renomear uma Coluna:**  
 ```sql
 ALTER TABLE livros RENAME autor TO nome_autor;
 ```  
