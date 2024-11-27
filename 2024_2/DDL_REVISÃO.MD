@@ -117,11 +117,11 @@ ALTER TABLE livros MODIFY COLUMN titulo TEXT;
 ---
 **Renomear e mudar o tipo de uma Coluna:**  
 ```sql
-ALTER TABLE livros RENAME autor nome_autor VARCHAR(255);
+ALTER TABLE livros RENAME autor TO nome_autor;
 ```  
 OU
 ```sql
-ALTER TABLE livros RENAME COLUMN autor nome_autor VARCHAR(255);
+ALTER TABLE livros RENAME COLUMN autor TO nome_autor;
 ```  
 ---
 **Renomear e/ou mudar o tipo de uma Coluna:**  
