@@ -41,7 +41,7 @@ Exemplo Avançado:
 ```sql
 SELECT DISTINCT cidade, estado FROM clientes;
 ```
-Retorna combinações únicas de cidades e estados na tabela clientes.
+Retorna combinações únicas de cidades e seus respectivos estados (que podem ser repetidos) na tabela clientes.
   
 ---
 
