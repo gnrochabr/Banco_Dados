@@ -105,7 +105,7 @@ ou
 ```sql
 ALTER TABLE livros ADD COLUMN editora VARCHAR(150);
 ```  
-
+---
 **Modificar o Tipo de uma Coluna:**  
 ```sql
 ALTER TABLE livros MODIFY titulo TEXT;
@@ -114,6 +114,7 @@ OU
 ```sql
 ALTER TABLE livros MODIFY titulo TEXT;
 ```  
+---
 **Renomear e mudar o tipo de uma Coluna:**  
 ```sql
 ALTER TABLE livros RENAME autor nome_autor VARCHAR(255);
@@ -122,7 +123,7 @@ OU
 ```sql
 ALTER TABLE livros RENAME COLUMN autor nome_autor VARCHAR(255);
 ```  
-
+---
 **Renomear e/ou mudar o tipo de uma Coluna:**  
 ```sql
 ALTER TABLE livros CHANGE desc descricao VARCHAR(255);
@@ -131,18 +132,17 @@ OU
 ```sql
 ALTER TABLE livros CHANGE descricao desc_livro text;
 ```  
-
-
+---
 **Remover uma Coluna:**  
 ```sql
 ALTER TABLE livros DROP COLUMN genero;
 ```  
-
+---
 **Adicionar Índice:**  
 ```sql
 ALTER TABLE livros ADD INDEX idx_editora (editora);
 ```  
-
+---
 ### Boas Práticas  
 - Realize alterações em um ambiente de teste antes de aplicá-las em produção.  
 - Use **índices com moderação** para evitar impactos negativos em operações de escrita.  
