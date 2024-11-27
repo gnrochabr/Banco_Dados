@@ -101,16 +101,37 @@ ALTER TABLE tabela_nome
 ```sql
 ALTER TABLE livros ADD editora VARCHAR(150);
 ```  
+ou
+```sql
+ALTER TABLE livros ADD COLUMN editora VARCHAR(150);
+```  
 
 **Modificar o Tipo de uma Coluna:**  
 ```sql
 ALTER TABLE livros MODIFY titulo TEXT;
 ```  
-
-**Renomear uma Coluna:**  
+OU
 ```sql
-ALTER TABLE livros CHANGE autor nome_autor VARCHAR(255);
+ALTER TABLE livros MODIFY titulo TEXT;
 ```  
+**Renomear e mudar o tipo de uma Coluna:**  
+```sql
+ALTER TABLE livros RENAME autor nome_autor VARCHAR(255);
+```  
+OU
+```sql
+ALTER TABLE livros RENAME COLUMN autor nome_autor VARCHAR(255);
+```  
+
+**Renomear e/ou mudar o tipo de uma Coluna:**  
+```sql
+ALTER TABLE livros CHANGE desc descricao VARCHAR(255);
+```  
+OU
+```sql
+ALTER TABLE livros CHANGE descricao desc_livro text;
+```  
+
 
 **Remover uma Coluna:**  
 ```sql
